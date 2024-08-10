@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load wagtailimages_tags %}
+
+{% block content %}
+    {% include "base/include/header-hero.html" %}
+
+    <div class="container lgucms-detail feature-page">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-md-7">
+                    <div class="row">
+                        {% if page.body %}
+                            {% include 'blocks/feature_block.html' %}
+                        {% endif %}    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

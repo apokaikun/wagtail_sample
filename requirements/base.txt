@@ -1,0 +1,7 @@
+Django
+django-dotenv
+wagtail
+wagtailfontawesome
+django-debug-toolbar
+gunicorn
+psycopg2-binary

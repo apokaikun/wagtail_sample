@@ -1,0 +1,7 @@
+-r base.txt
+dj-database-url
+whitenoise
+django-storages
+django-redis
+django_cache_url
+boto3

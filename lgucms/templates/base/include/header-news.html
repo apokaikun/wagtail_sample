@@ -1,0 +1,28 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% if page.image %}
+    {% image page.image fill-1920x250 as image %}
+    <div class="container-fluid hero hero--news" style="background-image:url('{{ image.url }}')"></div>
+{% endif %}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 col-md-12">
+            <h1 class="index-header__title index-header__title--news">{{ page.title }}</h1>
+            {% if page.subtitle %}
+              <p>{{ page.subtitle }}</p>
+            {% endif %}
+        </div>
+        <div class="col-sm-12 col-md-12">
+            
+            {% if page.date_published %}
+            <div class="news__published">
+                <span style="font-style: italic; font-weight: bolder;">Date Published : </span> {{ page.date_published }}
+            </div>
+            {% endif %}
+
+            {% if page.introduction %}
+            <blockquote><p class="index-header__introduction index-header__introduction--news">{{ page.introduction }}</p></blockquote>
+            {% endif %}
+        </div>
+    </div>
+</div>

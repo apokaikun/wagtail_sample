@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags navigation_tags wagtailimages_tags %}
+
+{% if tag %}
+{% block title %}
+Viewing all news posts sorted by the tag {{ tag }}
+{% endblock %}
+{% endif %}
+
+{% block content %}
+<!-- {% image self.image fill-1920x300 as hero_img %} -->
+{% include "base/include/header-news.html" %}
+
+<div class="container">
+    {% if tag %}
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="index-header__title">Project Updates</h1>
+        </div>
+        <div class="col-md-12">
+            <p class="index-header__introduction">Viewing all news and updates sorted by the tag <span
+                    class="news-tags__tag">{{ tag }}</span>.</p>
+        </div>
+    </div>
+    {% endif %}
+
+    <div class="news-list">
+        {% if posts %}
+        {% for news in posts %}
+        {% include "includes/card/news-listing-card.html" %}
+        {% endfor %}
+        {% else %}
+        <div class="col-md-12">
+            <p>Oh, snap. Looks like we were too busy maritesing to write any news articles. Sorry.</p>
+        </div>
+        {% endif %}
+    </div>
+    <div class="news-tags">
+        {% if page.get_child_tags %}
+        All tags under "{{ page.title }}" :
+        <span class="news-tags__pill news-tags__pill--selected">All</span>
+        {% for tag in page.get_child_tags %}
+        <a class="news-tags__pill" aria-label="Filter by tag name {{ tag }}" href="{{ tag.url }}">{{ tag }}</a>
+        {% endfor %}
+        {% endif %}
+    </div>
+
+</div>
+{% endblock content %}

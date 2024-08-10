@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% load navigation_tags wagtailimages_tags %}
+
+{% block content %}
+
+{% image self.image fill-1920x400 as hero_img %}
+{% include "base/include/header-news.html" %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+
+            {{ page.body }}
+
+            <div class="news__meta">
+                {% if page.authors %}
+                <span>Author{% if page.authors|length > 1 %}s{% endif %} : </span>
+                <div class="news__avatars">
+                    {% for author in page.authors %}
+                    <div class="news__author">{% image author.image fill-50x50-c100 class="news__avatar" %}
+                        {{ author.first_name }} {{ author.last_name }}</div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+                {% if page.editor %}
+                <span>Posted by{% if page.authors|length > 1 %}s{% endif %} : </span>
+                <div class="news__avatars">
+                    <div class="news__author">{{ page.editor }}</div>
+                </div>
+                {% endif %}
+            </div>
+
+            {% if page.get_tags %}
+            <p class="news__tag-introduction">Find more news articles with similar tags</p>
+            <div class="news-tags news-tags--condensed">
+                <span class="u-sr-only">Filter news articles by tag</span>
+                {% for tag in page.get_tags %}
+                <a href="{{ tag.url }}" class="news-tags__pill">{{ tag }}</a>
+                {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+        <div class="col-sm-4 col-md-4">
+            <h3> Features can be insterted here...</h3>
+        </div>
+    </div>
+</div>
+{% endblock content %}

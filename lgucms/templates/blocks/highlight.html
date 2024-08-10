@@ -1,0 +1,9 @@
+{% load wagtailimages_tags %}
+
+<blockquote>
+    {% if self.highlight_items %}
+    <span style="{{ self.format }}" class="page-highlight">
+        {{ self.highlight_items }}</li>
+        {% endif %}
+    </span>
+</blockquote>

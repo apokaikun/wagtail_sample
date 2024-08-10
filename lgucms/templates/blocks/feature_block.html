@@ -1,0 +1,3 @@
+{% for childpage in page.body %}
+    {% include "includes/card/feature-card.html" with page=childpage.value.specific %}
+{% endfor %}

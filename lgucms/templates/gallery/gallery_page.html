@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% load wagtailcore_tags navigation_tags wagtailimages_tags static %}
+
+{% block content %}
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>{{ page.title }}</h1>
+      {{ page.body }}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <h3>{{ collection_name }}</h3>
+    </div>
+  </div>
+  <div class="row">
+    {% for img_ in images %}
+    {% image img_ width-1080 as img_original %}
+    {% image img_ width-320 as img_small %}
+    <div class="col-md-3">
+      <img src="{{ img_small.url }}" onclick="openmodal(this)" data-url="{{ img_original.url }}"
+        data-caption="{{ page.title }} - {{ collection_name }}" class="gallery-img" />
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- The Close Button -->
+  <span class="close">&times;</span>
+
+  <!-- Modal Content (The Image) -->
+  <img class="modal-content" id="img01">
+  <div id="caption"></div>
+</div>
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/modal.css' %}">
+<script type="text/javascript" src="{% static 'js/modal.js' %}"></script>
+
+{% endblock %}
