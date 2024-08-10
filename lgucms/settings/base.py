@@ -29,9 +29,7 @@ INSTALLED_APPS = [
     "lgucms.personnel",
     "lgucms.gallery",
     "lgucms.news",
-    "lgucms.barangay",
     "lgucms.transparency",
-    "lgucms.branch",
     "lgucms.bulletin",
 
     'wagtail.contrib.search_promotions',
@@ -67,7 +65,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
+    "debug_toolbar.middleware.DebugToolbarMiddleware",
 
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -108,13 +106,9 @@ WSGI_APPLICATION = "lgucms.wsgi.application"
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'lgucms',
-        'USER': 'lguadmin',
-        'PASSWORD': 'EJN0NT-rlW5f7mX5Ynj1DKalqGHjN5W8Rf1Mw_LRph0',
-        'HOST': '127.0.0.1',
-        'PORT': '5432',
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
     }
 }
 
